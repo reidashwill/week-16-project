@@ -14,6 +14,6 @@ class ProductControl extends React.Component{
   render(){
     let currentyVisibleState = null;
     let buttonText = null;
-    
+  }
 
 }
