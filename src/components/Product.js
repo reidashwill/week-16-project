@@ -16,7 +16,7 @@ function Product(props){
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   brand: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.number,
   alcoholContent: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
 };
