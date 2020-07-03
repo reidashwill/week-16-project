@@ -1,5 +1,6 @@
 import React from 'react'
 import ProductList from './ProductList'
+import NewProductForm from './NewProductForm'
 
 
 class ProductControl extends React.Component{
@@ -8,20 +9,30 @@ class ProductControl extends React.Component{
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      productList: []
+      masterProductList: []
     }
   }
 
+  handleClick = () => {
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage
+    }));
+    
+  }
+
   render(){
-    let currentyVisibleState = null;
+    let currentlyVisibleState = null;
     let buttonText = null
-    if(this.state.formVisibleOnPage = false){
-      currentyVisibleState = <ProductList />
-      buttonText = "add product"
+    if(this.state.formVisibleOnPage){
+      currentlyVisibleState = <NewProductForm />
+      buttonText = "Return to Products"
+    }else{
+      currentlyVisibleState = <ProductList productList={this.state.masterProductList}/>
+      buttonText = "Add Product"
     }
     return(
       <React.Fragment>
-        {currentyVisibleState}
+        {currentlyVisibleState}
         <button>{buttonText}</button>
       </React.Fragment>
     )
