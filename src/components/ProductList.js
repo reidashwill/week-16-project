@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Product from  './Product';
+import './App.css';
 
 function ProductList(props) {
   if(props.productList.length === 0){
@@ -16,7 +17,7 @@ function ProductList(props) {
     console.log(props.productList.length)
     return(
       <React.Fragment>
-        <h1>Our Glorious Beer Selection!</h1>
+        <h1 className="header">Our Glorious Beer Selection!</h1>
         {props.productList.map((product) =>
         <Product
           whenProductClicked = { props.onProductSelection}
