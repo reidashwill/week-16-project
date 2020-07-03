@@ -16,10 +16,16 @@ class ProductControl extends React.Component{
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage,
-      selectedProduct: null,
-    }));
+    if(this.state.selectedProduct){
+      this.setState({
+      formVisibleOnPage: false,
+      selectedProduct: null
+      });
+    }else{
+      this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
     
   }
   handleChangingSelectedProduct = (id) => {
