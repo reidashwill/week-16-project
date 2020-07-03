@@ -2,6 +2,7 @@ import React from 'react'
 import ProductList from './ProductList'
 import NewProductForm from './NewProductForm'
 import ProductDetail from './ProductDetail'
+import EditProductForm from './EditProductForm'
 
 
 class ProductControl extends React.Component{
@@ -11,23 +12,38 @@ class ProductControl extends React.Component{
     this.state = {
       formVisibleOnPage: false,
       masterProductList: [],
-      selectedProduct: null
+      selectedProduct: null,
+      editing: false
     }
   }
 
   handleClick = () => {
     if(this.state.selectedProduct){
       this.setState({
-      formVisibleOnPage: false,
-      selectedProduct: null
+        editing: false,
+        formVisibleOnPage: false,
+        selectedProduct: null
       });
     }else{
       this.setState(prevState => ({
       formVisibleOnPage: !prevState.formVisibleOnPage
       }));
     }
-    
   }
+
+  handleEditClick = () => {
+    this.setState({editing: true})
+  }
+
+  handleEditingProduct = (productToEdit) => {
+    const editedProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToEdit);
+    this.setState({
+      masterProductList: editedProductList,
+      editing: false,
+      selectedProduct: null
+    })
+  }
+
   handleChangingSelectedProduct = (id) => {
     const selectedProduct = this.state.masterProductList.filter(product => product.id === id)[0];
     this.setState({selectedProduct: selectedProduct})
@@ -52,9 +68,12 @@ class ProductControl extends React.Component{
   render(){
     let currentlyVisibleState = null;
     let buttonText = null
-    if(this.state.selectedProduct){
-      currentlyVisibleState = <ProductDetail product = {this.state.selectedProduct} onSellingPint={this.handleDecrementingQuantity}/>
-      buttonText = "see all of our beers!"
+    if(this.state.editing){
+      currentlyVisibleState = <EditProductForm product = {this.state.selectedProduct} onEditProduct = {this.handleEditingProduct}/>
+      buttonText="See all of our beers!"
+    }else if(this.state.selectedProduct){
+      currentlyVisibleState = <ProductDetail product = {this.state.selectedProduct} onSellingPint={this.handleDecrementingQuantity} onClickingEdit = {this.handleEditClick}/>
+      buttonText = "See all of our beers!"
     }else if(this.state.formVisibleOnPage){
       currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList}/>
       buttonText = "See all of our beers!"

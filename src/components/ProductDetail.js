@@ -19,6 +19,7 @@ function ProductDetail(props) {
         <h4>Price per pint: ${product.price}</h4>
         <h4>We have {product.quantity} pints available!</h4>
         <button onClick = {() => props.onSellingPint(product)}>Sell a Pint</button>
+        <button onClick={ props.onClickingEdit }>Update this Keg!</button>
       </React.Fragment>
     )
   }
