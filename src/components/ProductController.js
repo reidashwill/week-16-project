@@ -1,6 +1,7 @@
 import React from 'react'
 import ProductList from './ProductList'
 import NewProductForm from './NewProductForm'
+import ProductDetail from './ProductDetail'
 
 
 class ProductControl extends React.Component{
@@ -16,7 +17,8 @@ class ProductControl extends React.Component{
 
   handleClick = () => {
     this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
+      formVisibleOnPage: !prevState.formVisibleOnPage,
+      selectedProduct: null,
     }));
     
   }
@@ -33,11 +35,14 @@ class ProductControl extends React.Component{
   render(){
     let currentlyVisibleState = null;
     let buttonText = null
-    if(this.state.formVisibleOnPage){
+    if(this.state.selectedProduct){
+      currentlyVisibleState = <ProductDetail product = {this.state.selectedProduct}/>
+      buttonText = "Return to Products"
+    }else if(this.state.formVisibleOnPage){
       currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList}/>
       buttonText = "Return to Products"
     }else{
-      currentlyVisibleState = <ProductList productList={this.state.masterProductList} onProductSelection={this.handleChangingSelectedTicket}/>
+      currentlyVisibleState = <ProductList productList={this.state.masterProductList} onProductSelection={this.handleChangingSelectedProduct}/>
       buttonText = "Add Product"
     }
     return(
