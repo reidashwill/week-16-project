@@ -6,8 +6,10 @@ import ProductController from  './ProductController'
 function App() {
   return(
     <React.Fragment>
-      <Header />
-      <ProductController />
+      <div className="container">
+        <Header />
+        <ProductController />
+      </div>
     </React.Fragment>
   )
 }

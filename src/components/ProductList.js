@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Product from  './Product';
-import './App.css';
 
 function ProductList(props) {
   if(props.productList.length === 0){
     console.log(props.productList)
     return(
       <React.Fragment>
-        <h1>Our Glorious Beer Selection!</h1>
-        <h4>It appears as though all of the beer is gone!  Please check back soon, or add a keg!</h4>
+        <h1 className="header">Our Glorious Beer Selection!</h1>
+        <h4 className="header">It appears as though all of the beer is gone!  Please check back soon, or add a keg!</h4>
       </React.Fragment>
     )
   }else{
