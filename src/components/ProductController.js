@@ -33,7 +33,7 @@ class ProductControl extends React.Component{
     return(
       <React.Fragment>
         {currentlyVisibleState}
-        <button>{buttonText}</button>
+        <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     )
   }
