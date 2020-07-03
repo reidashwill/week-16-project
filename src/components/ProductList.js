@@ -3,22 +3,35 @@ import PropTypes from 'prop-types';
 import Product from  './Product';
 
 function ProductList(props) {
-  return(
-    <React.Fragment>
-      {props.productList.map((product) =>
-      <Product
-        whenProductClicked = { props.onProductSelection}
-        name={product.name}
-        brand={product.brand}
-        price={product.price}
-        alcoholContent={product.alcoholContent}
-        quantity={product.quantity}
-        id={product.id}
-        key={product.id}/>
+  if(props.productList.length === 0){
+    console.log(props.productList)
+    return(
+      <React.Fragment>
+        <h1>Our Glorious Beer Selection!</h1>
+        <h4>It appears as though all of the beer is gone!  Please check back soon, or add a keg!</h4>
+      </React.Fragment>
+    )
+  }else{
+    console.log("hits not sold out")
+    console.log(props.productList.length)
+    return(
+      <React.Fragment>
+        <h1>Our Glorious Beer Selection!</h1>
+        {props.productList.map((product) =>
+        <Product
+          whenProductClicked = { props.onProductSelection}
+          name={product.name}
+          brand={product.brand}
+          price={product.price}
+          alcoholContent={product.alcoholContent}
+          quantity={product.quantity}
+          id={product.id}
+          key={product.id}/>
 
-      )}
-    </React.Fragment>
-  )
+        )}
+      </React.Fragment>
+    )
+  }
 }
 
 ProductList.propTypes = {

@@ -37,17 +37,7 @@ class ProductControl extends React.Component{
     const newMasterProductList = this.state.masterProductList.concat(newProduct);
     this.setState({masterProductList: newMasterProductList, formVisibleOnPage: false})
   }
-  // handleDecrementingQuantity = (productToEdit) => {
-  //   console.log("hitting decremeting function")
-  //   console.log(productToEdit)
-  //   const decrementedProduct = {name: productToEdit.name, brand: productToEdit.brand, price: productToEdit.price, quantity: productToEdit.quantity-1}
-  //   console.log(decrementedProduct)
-  //   const editedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(decrementedProduct);
-  //   this.setState({
-  //     masterProductList: editedMasterProductList,
-  //     selectedProduct: null
-  //   });
-  // }
+  
   handleDecrementingQuantity = (productToEdit) => {
     console.log("hitting decremeting function")
     productToEdit.quantity --
@@ -64,13 +54,13 @@ class ProductControl extends React.Component{
     let buttonText = null
     if(this.state.selectedProduct){
       currentlyVisibleState = <ProductDetail product = {this.state.selectedProduct} onSellingPint={this.handleDecrementingQuantity}/>
-      buttonText = "Return to Products"
+      buttonText = "see all of our beers!"
     }else if(this.state.formVisibleOnPage){
       currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList}/>
-      buttonText = "Return to Products"
+      buttonText = "See all of our beers!"
     }else{
       currentlyVisibleState = <ProductList productList={this.state.masterProductList} onProductSelection={this.handleChangingSelectedProduct}/>
-      buttonText = "Add Product"
+      buttonText = "Add a Keg!"
     }
     return(
       <React.Fragment>
