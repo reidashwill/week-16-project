@@ -37,12 +37,20 @@ class ProductControl extends React.Component{
     const newMasterProductList = this.state.masterProductList.concat(newProduct);
     this.setState({masterProductList: newMasterProductList, formVisibleOnPage: false})
   }
+  handleDecrementingQuantity = (product) => {
+    this.setState({
+      selectedProduct: product.quantity ++
+
+    })
+    // const newMasterProductList = this.state.masterProductList.filter
+  }
 
   render(){
     let currentlyVisibleState = null;
     let buttonText = null
     if(this.state.selectedProduct){
       currentlyVisibleState = <ProductDetail product = {this.state.selectedProduct}/>
+      console.log(this.state.selectedProduct.name)
       buttonText = "Return to Products"
     }else if(this.state.formVisibleOnPage){
       currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList}/>

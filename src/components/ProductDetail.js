@@ -7,6 +7,8 @@ function ProductDetail(props) {
   return(
     <React.Fragment>
       <h1>{product.name}</h1>
+      <h4>{product.quantity}</h4>
+      <button>Sell a Pint</button>
     </React.Fragment>
   )
 }
