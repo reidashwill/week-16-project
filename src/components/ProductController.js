@@ -37,10 +37,26 @@ class ProductControl extends React.Component{
     const newMasterProductList = this.state.masterProductList.concat(newProduct);
     this.setState({masterProductList: newMasterProductList, formVisibleOnPage: false})
   }
-  handleDecrementingQuantity = (productToDecrement) => {
-    const editedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToDecrement.quantity --);
+  // handleDecrementingQuantity = (productToEdit) => {
+  //   console.log("hitting decremeting function")
+  //   console.log(productToEdit)
+  //   const decrementedProduct = {name: productToEdit.name, brand: productToEdit.brand, price: productToEdit.price, quantity: productToEdit.quantity-1}
+  //   console.log(decrementedProduct)
+  //   const editedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(decrementedProduct);
+  //   this.setState({
+  //     masterProductList: editedMasterProductList,
+  //     selectedProduct: null
+  //   });
+  // }
+  handleDecrementingQuantity = (productToEdit) => {
+    console.log("hitting decremeting function")
+    console.log(productToEdit)
+    const decrementedProduct = {name: productToEdit.name, brand: productToEdit.brand, price: productToEdit.price, quantity: productToEdit.quantity-1}
+    console.log(decrementedProduct)
+    const editedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(decrementedProduct);
     this.setState({
       masterProductList: editedMasterProductList,
+      selectedProduct: null
     });
   }
 
@@ -49,7 +65,6 @@ class ProductControl extends React.Component{
     let buttonText = null
     if(this.state.selectedProduct){
       currentlyVisibleState = <ProductDetail product = {this.state.selectedProduct} onSellingPint={this.handleDecrementingQuantity}/>
-      console.log(this.state.selectedProduct.name)
       buttonText = "Return to Products"
     }else if(this.state.formVisibleOnPage){
       currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList}/>
