@@ -9,7 +9,8 @@ class ProductControl extends React.Component{
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      masterProductList: []
+      masterProductList: [],
+      selectedProduct: null
     }
   }
 
@@ -18,6 +19,10 @@ class ProductControl extends React.Component{
       formVisibleOnPage: !prevState.formVisibleOnPage
     }));
     
+  }
+  handleChangingSelectedProduct = (id) => {
+    const selectedProduct = this.state.masterProductList.filter(product => product.id === id)[0];
+    this.setState({selectedProduct: selectedProduct})
   }
 
   handleAddingNewProductToList = (newProduct) => {
@@ -32,7 +37,7 @@ class ProductControl extends React.Component{
       currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList}/>
       buttonText = "Return to Products"
     }else{
-      currentlyVisibleState = <ProductList productList={this.state.masterProductList}/>
+      currentlyVisibleState = <ProductList productList={this.state.masterProductList} onProductSelection={this.handleChangingSelectedTicket}/>
       buttonText = "Add Product"
     }
     return(
