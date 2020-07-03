@@ -1,4 +1,5 @@
 import React from 'react'
+import ProductList from './ProductList'
 
 
 class ProductControl extends React.Component{
@@ -13,7 +14,18 @@ class ProductControl extends React.Component{
 
   render(){
     let currentyVisibleState = null;
-    let buttonText = null;
+    let buttonText = null
+    if(this.state.formVisibleOnPage = false){
+      currentyVisibleState = <ProductList />
+      buttonText = "add product"
+    }
+    return(
+      <React.Fragment>
+        {currentyVisibleState}
+        <button>{buttonText}</button>
+      </React.Fragment>
+    )
   }
 
 }
+export default ProductControl

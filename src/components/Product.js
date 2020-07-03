@@ -22,4 +22,4 @@ Product.propTypes = {
   quantity: PropTypes.number.isRequired,
 };
 
-export default Ticket;
+export default Product;

@@ -1,5 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import Product from  './Product';
 
 function ProductList(props) {
   return(
@@ -15,3 +16,9 @@ function ProductList(props) {
     </React.Fragment>
   )
 }
+
+// ProductList.PropTypes = {
+//   productList: PropTypes.array
+// }
+
+export default ProductList
