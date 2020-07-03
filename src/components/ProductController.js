@@ -31,6 +31,14 @@ class ProductControl extends React.Component{
     }
   }
 
+  handleDeletingProduct = (id) => {
+    const newMasterProductList = this.state.masterProductList.filter(product => product.id !== id);
+    this.setState({
+      masterProductList: newMasterProductList,
+      selectedProduct: null
+    })
+  } 
+
   handleEditClick = () => {
     this.setState({editing: true})
   }
@@ -72,7 +80,7 @@ class ProductControl extends React.Component{
       currentlyVisibleState = <EditProductForm product = {this.state.selectedProduct} onEditProduct = {this.handleEditingProduct}/>
       buttonText="See all of our beers!"
     }else if(this.state.selectedProduct){
-      currentlyVisibleState = <ProductDetail product = {this.state.selectedProduct} onSellingPint={this.handleDecrementingQuantity} onClickingEdit = {this.handleEditClick}/>
+      currentlyVisibleState = <ProductDetail product = {this.state.selectedProduct} onSellingPint={this.handleDecrementingQuantity} onClickingEdit = {this.handleEditClick} onClickingDelete = {this.handleDeletingProduct}/>
       buttonText = "See all of our beers!"
     }else if(this.state.formVisibleOnPage){
       currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProductToList}/>
