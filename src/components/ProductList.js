@@ -4,7 +4,7 @@ import Product from  './Product';
 
 function ProductList(props) {
   if(props.productList.length === 0){
-    console.log(props.productList)
+
     return(
       <React.Fragment>
         <h1 className="header">Our Glorious Beer Selection!</h1>
@@ -12,8 +12,6 @@ function ProductList(props) {
       </React.Fragment>
     )
   }else{
-    console.log("hits not sold out")
-    console.log(props.productList.length)
     return(
       <React.Fragment>
         <h1 className="header">Our Glorious Beer Selection!</h1>

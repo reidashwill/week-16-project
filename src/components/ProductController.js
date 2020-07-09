@@ -63,9 +63,7 @@ class ProductControl extends React.Component{
   }
   
   handleDecrementingQuantity = (productToEdit) => {
-    console.log("hitting decremeting function")
     productToEdit.quantity --
-    console.log(productToEdit)
     const editedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToEdit);
     this.setState({
       masterProductList: editedMasterProductList,

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { v4 } from 'uuid';
 
 function EditProductForm (props) {
-  const { product } = props;
 
   function handleEditProductFormSubmission(event) {
     event.preventDefault();
